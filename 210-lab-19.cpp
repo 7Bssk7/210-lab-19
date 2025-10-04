@@ -46,6 +46,13 @@ class Movie{
             }
 
         }
+        void printReview(){
+            Node *current = list;
+            while(current){
+                cout << current->review.getRating() << " " << current->review.getComment() << endl;
+            }
+
+        }
     private:
         string title;
         Node *list;
@@ -53,6 +60,7 @@ class Movie{
 
 double randomRating();
 void addReviews(vector<Movie> &);
+void outputReviews(vector<Movie>);
 
 int main(){
 
@@ -88,9 +96,9 @@ void addReviews(vector<Movie>& m){
         cout << "Error, file is not opening!" << endl;
     }
     else{
-        while((getline(inputFile, tempC)) && (i < 4)){
+        while((getline(inputFile, tempC)) && (i < m.size())){
             if(tempC != ""){
-                m.at(i).addReview( randomRating(), tempC);
+                m.at(i).addReview( randomRating(), tempC );
             }
             else{
                 i++;
@@ -98,4 +106,14 @@ void addReviews(vector<Movie>& m){
 
         }
     }
+}
+
+void outputReviews(vector<Movie> m){
+    for(int i = 0; i < m.size(); ++i){
+        cout << "Movie: " << m.at(i).getTitle() << endl;
+        m.at(i).printReview();
+
+        cout << endl;
+    }
+
 }
