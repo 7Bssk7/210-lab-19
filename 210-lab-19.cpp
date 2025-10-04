@@ -69,6 +69,10 @@ int main(){
     movies.push_back(Movie("Guardians of the Galaxy Vol. 3"));
     movies.push_back(Movie("Spider-Man: No Way Home"));
     movies.push_back(Movie("Black Panther: Wakanda Forever"));
+
+    addReviews(movies);
+
+    outputReviews(movies);
  
 
     return 0;
