@@ -31,13 +31,28 @@ class Movie{
         Movie(string t) { title = t, list = nullptr; }
         string getTitle() const { return title; }
         void setTitle( string t ) { this->title = t; }
+        void addReview( double r, string c) {
+            Node *newNode = new Node;
+            newNode->review.setComment(c);
+            newNode->review.setRating(r);
+
+            if(!list){
+                list = newNode;
+                newNode->next = nullptr;
+            }
+            else{
+                newNode->next = list;
+                list = newNode;
+            }
+
+        }
     private:
         string title;
         Node *list;
 };
 
 double randomRating();
-void addReviews(vector<Movie> );
+void addReviews(vector<Movie> &);
 
 int main(){
 
@@ -64,7 +79,7 @@ double randomRating(){
 
 }
 
-void addReviews(vector<Movie> m){
+void addReviews(vector<Movie>& m){
     ifstream inputFile("Comments.txt");
     int i = 0;
     string tempC;
@@ -73,10 +88,12 @@ void addReviews(vector<Movie> m){
         cout << "Error, file is not opening!" << endl;
     }
     else{
-        while(getline(inputFile, tempC)){
+        while((getline(inputFile, tempC)) && (i < 3)){
             if(tempC != ""){
-                Node *newNode = new Node;
-                newNode
+                m.at(i).addReview( randomRating(), tempC);
+            }
+            else{
+                i++;
             }
 
         }
