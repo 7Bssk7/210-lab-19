@@ -88,7 +88,7 @@ void addReviews(vector<Movie>& m){
         cout << "Error, file is not opening!" << endl;
     }
     else{
-        while((getline(inputFile, tempC)) && (i < 3)){
+        while((getline(inputFile, tempC)) && (i < 4)){
             if(tempC != ""){
                 m.at(i).addReview( randomRating(), tempC);
             }
