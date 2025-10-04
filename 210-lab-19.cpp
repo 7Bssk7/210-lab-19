@@ -47,8 +47,8 @@ double randomRating(){
 
     random_device rd;
     default_random_engine generator (rd());
-    uniform_int_distribution<double> distribution(1.0 , 5.0);
-    double rating = distribution(generator);
+    uniform_real_distribution<double> distribution(1.0 , 5.0);
+    double rating = round(distribution(generator) * 10)/10.0;
 
     return rating;
 
