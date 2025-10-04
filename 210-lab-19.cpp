@@ -50,6 +50,7 @@ class Movie{
             Node *current = list;
             while(current){
                 cout << current->review.getRating() << " " << current->review.getComment() << endl;
+                current = current->next;
             }
 
         }
