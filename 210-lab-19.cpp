@@ -9,7 +9,23 @@ using namespace std;
 const double RATING_MAX = 5.0, RATING_MIN = 1.0;
 const char YES = 'y', NO = 'n';
 
-// Movie class stores a single review's rating and comment
+
+// Node struct represents a single node on the linked list
+struct Node{
+    MovieRating choice;
+    Node *next;
+};
+
+class Movie{
+    public:
+        string getTitle() const { return title; }
+        void setTitle(string t ) { this->title = t; }
+    private:
+        string title;
+        Node *list;
+};
+
+// MovieRating class stores a single review's rating and comment
 class MovieRating{
     public:
         string getComment() const { return comment; }
@@ -21,12 +37,6 @@ class MovieRating{
         string comment;
         double rating;
 
-};
-
-// Node struct represents a single node on the linked list
-struct Node{
-    MovieRating choice;
-    Node *next;
 };
 
 void outputMenu();
