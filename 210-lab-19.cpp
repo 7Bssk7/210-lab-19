@@ -2,6 +2,7 @@
 // IDE used : Visual Studio
 #include <iostream>
 #include <string>
+#include <random>
 #include <fstream>
 using namespace std;
 
@@ -31,7 +32,24 @@ class Movie{
         Node *list;
 };
 
+double randomRating();
+
 int main(){
 
+    double rating = randomRating();
+
+    cout << "Rating: " << rating << endl;
+
     return 0;
+}
+
+double randomRating(){
+
+    random_device rd;
+    default_random_engine generator (rd());
+    uniform_int_distribution<double> distribution(1.0 , 5.0);
+    double rating = distribution(generator);
+
+    return rating;
+
 }
