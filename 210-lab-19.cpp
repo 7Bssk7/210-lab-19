@@ -1,6 +1,7 @@
 // COMSC-210 | Lab 18 | Arkhip Finski
 // IDE used : Visual Studio
 #include <iostream>
+#include <fstream>
 #include <string>
 using namespace std;
 
@@ -9,7 +10,7 @@ const double RATING_MAX = 5.0, RATING_MIN = 1.0;
 const char YES = 'y', NO = 'n';
 
 // Movie class stores a single review's rating and comment
-class Movie{
+class MovieRating{
     public:
         string getComment() const { return comment; }
         void setComment( string c) { this->comment = c; }
@@ -24,14 +25,13 @@ class Movie{
 
 // Node struct represents a single node on the linked list
 struct Node{
-    Movie choice;
+    MovieRating choice;
     Node *next;
 };
 
 void outputMenu();
 void outputList( Node *);
 void addHead( Node *&);
-void addTail ( Node *&);
 double averageRating ( Node *);
 
 int main(){
@@ -49,10 +49,7 @@ int main(){
     }
 
     // Call appropriate insertion function 
-    if(entry == 2){
-        addTail(head);
-    }
-    else if(entry == 1){
+    if(entry == 1){
         addHead(head);
     }
 
@@ -124,58 +121,6 @@ void addHead( Node *&hd){
             hd = newNode;
         }
         
-        cout << "Enter another review? Y/N: ";
-        cin >> q;
-        while((tolower(q) != NO) && (tolower(q) != YES)){
-            cout << "Invalid input, please enter your choice again(Y/N): ";
-            cin >> q;
-        }
-        if(tolower(q) == NO){
-             review = 0;
-        }
-    }
-
-
-
-}
-
-// addTail() inserts new reviews at the tail of the linked list
-// argument: hd - reference to the pointer to the head pointer of the linked list 
-// return: no return(void function)
-void addTail ( Node *&hd){
-    double tempR;
-    string tempC;
-    char q;
-    bool review = 1;
-
-    while(review == 1){
-        Node *newNode = new Node;
-
-        cout << "Enter review rating 0-5: ";
-        cin >> tempR;
-        while((tempR > RATING_MAX) || (tempR < RATING_MIN)){
-            cout << "Invalid Rating, please enter your rating again(1-5): ";
-            cin >> tempR;
-        }
-        cout << "Enter review comment: "; 
-        cin.ignore();
-        getline(cin, tempC);
-        newNode->choice.setRating(tempR);
-        newNode->choice.setComment(tempC);
-
-        if(!hd){
-            hd = newNode;
-            newNode->next = nullptr;
-        }
-        else{
-            Node *current = hd;
-            while(current->next){
-                current = current->next;
-            }
-            current->next = newNode;
-            newNode->next = nullptr;
-        }
-
         cout << "Enter another review? Y/N: ";
         cin >> q;
         while((tolower(q) != NO) && (tolower(q) != YES)){
