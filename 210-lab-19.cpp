@@ -6,6 +6,8 @@
 #include <fstream>
 using namespace std;
 
+const int SIZE = 4;
+
 class MovieRating{
     public:
         string getComment() const { return comment; }
@@ -25,6 +27,8 @@ struct Node{
 
 class Movie{
     public:
+        Movie() { title = ""; }
+        Movie(string t) { title = t; }
         string getTitle() const { return title; }
         void setTitle( string t ) { this->title = t; }
     private:
@@ -35,6 +39,19 @@ class Movie{
 double randomRating();
 
 int main(){
+
+    vector<MovieRating> test;
+    ifstream inputFile("Comments.txt");
+
+    if(!inputFile){
+        cout << "Error, file is not opening!" << endl;
+
+        return 1;
+    }
+
+    for(int i = 0; i < SIZE; ++i){
+
+    }
 
     double rating = randomRating();
 
