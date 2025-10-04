@@ -37,6 +37,7 @@ class Movie{
 };
 
 double randomRating();
+void addReviews(vector<Movie> );
 
 int main(){
 
@@ -45,16 +46,11 @@ int main(){
     movies.push_back(Movie("Guardians of the Galaxy Vol. 3"));
     movies.push_back(Movie("Spider-Man: No Way Home"));
     movies.push_back(Movie("Black Panther: Wakanda Forever"));
-    ifstream inputFile("Comments.txt");
-
-    if(!inputFile){
-        cout << "Error, file is not opening!" << endl;
-
-        return 1;
-    }
+ 
 
     return 0;
 }
+
 
 
 double randomRating(){
@@ -66,4 +62,23 @@ double randomRating(){
 
     return rating;
 
+}
+
+void addReviews(vector<Movie> m){
+    ifstream inputFile("Comments.txt");
+    int i = 0;
+    string tempC;
+
+    if(!inputFile){
+        cout << "Error, file is not opening!" << endl;
+    }
+    else{
+        while(getline(inputFile, tempC)){
+            if(tempC != ""){
+                Node *newNode = new Node;
+                newNode
+            }
+
+        }
+    }
 }
