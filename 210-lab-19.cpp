@@ -27,8 +27,8 @@ struct Node{
 
 class Movie{
     public:
-        Movie() { title = ""; }
-        Movie(string t) { title = t; }
+        Movie() { title = "", list = nullptr; }
+        Movie(string t) { title = t, list = nullptr; }
         string getTitle() const { return title; }
         void setTitle( string t ) { this->title = t; }
     private:
@@ -40,7 +40,11 @@ double randomRating();
 
 int main(){
 
-    vector<MovieRating> test;
+    vector<Movie> movies;
+    movies.push_back(Movie("Avengers: Endgame"));
+    movies.push_back(Movie("Guardians of the Galaxy Vol. 3"));
+    movies.push_back(Movie("Spider-Man: No Way Home"));
+    movies.push_back(Movie("Black Panther: Wakanda Forever"));
     ifstream inputFile("Comments.txt");
 
     if(!inputFile){
@@ -49,16 +53,9 @@ int main(){
         return 1;
     }
 
-    for(int i = 0; i < SIZE; ++i){
-
-    }
-
-    double rating = randomRating();
-
-    cout << "Rating: " << rating << endl;
-
     return 0;
 }
+
 
 double randomRating(){
 
