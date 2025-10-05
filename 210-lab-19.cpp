@@ -6,8 +6,10 @@
 #include <fstream>
 using namespace std;
 
+// Constant for number of movies
 const int SIZE = 4;
 
+// Class to store individual reviews 
 class MovieRating{
     public:
         string getComment() const { return comment; }
@@ -19,6 +21,7 @@ class MovieRating{
         double rating;
 };
 
+// Node struct represents a single node on the linked list 
 struct Node{
     MovieRating review;
     Node *next;
