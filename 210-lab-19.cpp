@@ -28,17 +28,22 @@ struct Node{
 
 };
 
+// Class to represent a Movie and its linked list of (3)reviews
 class Movie{
     public:
+        // Default constructor 
         Movie() { title = "", list = nullptr; }
+        // Partial constructor with title
         Movie(string t) { title = t, list = nullptr; }
         string getTitle() const { return title; }
         void setTitle( string t ) { this->title = t; }
+        // This method adds a review to the head of the linked list
         void addReview( double r, string c) {
             Node *newNode = new Node;
             newNode->review.setComment(c);
             newNode->review.setRating(r);
-
+            
+            // Inserts data at head of the linked list
             if(!list){
                 list = newNode;
                 newNode->next = nullptr;
@@ -49,6 +54,7 @@ class Movie{
             }
 
         }
+        // Prints all reviews for a movie
         void printReview(){
             Node *current = list;
             while(current){
