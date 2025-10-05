@@ -74,14 +74,17 @@ void outputReviews(vector<Movie>);
 
 int main(){
 
+    // Initialize movie list with 4 Marvel titles
     vector<Movie> movies;
     movies.push_back(Movie("Avengers: Endgame"));
     movies.push_back(Movie("Guardians of the Galaxy Vol. 3"));
     movies.push_back(Movie("Spider-Man: No Way Home"));
     movies.push_back(Movie("Black Panther: Wakanda Forever"));
 
+    // Read all reviews from the file
     addReviews(movies);
-
+ 
+    // Display all reviews 
     outputReviews(movies);
  
 
@@ -89,7 +92,9 @@ int main(){
 }
 
 
-
+// randomRating() generates a random number of double data type between 1.0 to 5.0, rounded to 1 decimal 
+// argument: none
+// return: returns a number of double type, rounded to 1 decimal
 double randomRating(){
 
     random_device rd;
@@ -101,6 +106,9 @@ double randomRating(){
 
 }
 
+// addReviews() reads review comments from a file and call a randomRating() function for rating, and adds them to each Movie object
+// argument: a reference to the vecotr of Movie objects
+// return: no return (void function) 
 void addReviews(vector<Movie>& m){
     ifstream inputFile("Comments.txt");
     int i = 0;
@@ -122,6 +130,9 @@ void addReviews(vector<Movie>& m){
     }
 }
 
+// outputReviews() outputs all reviews for each Movie in the vector
+// argument: a copy of the vector of Movie objects
+// return: no return (void function) 
 void outputReviews(vector<Movie> m){
     for(int i = 0; i < m.size(); ++i){
         cout << "Movie: " << m.at(i).getTitle() << endl;
