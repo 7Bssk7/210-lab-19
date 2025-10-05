@@ -107,7 +107,7 @@ double randomRating(){
 }
 
 // addReviews() reads review comments from a file and call a randomRating() function for rating, and adds them to each Movie object
-// argument: a reference to the vecotr of Movie objects
+// argument: a reference to the vector of Movie objects
 // return: no return (void function) 
 void addReviews(vector<Movie>& m){
     ifstream inputFile("Comments.txt");
